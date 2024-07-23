@@ -1,0 +1,7 @@
+.button1 {
+  @apply bg-green-2 rounded-lg border-2
+    border-green-1 font-semibold
+    text-white my-2 p-4 block duration-300
+    hover:bg-green-1 hover:text-green-800
+    disabled:bg-gray-400 disabled:text-gray-500 disabled:border-gray-500;
+}

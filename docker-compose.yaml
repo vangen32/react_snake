@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+  frontend:
+    build:
+      context: ./WAT_Snake_React
+    ports:
+      - "3005:3005"
+    environment:
+      VITE_BASE_URL: http://localhost:3000  
+  backend:
+    build:
+      context: ./WAT_Snake_Backend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: root
+      DB_PASSWORD: Asd112233
+      DB_NAME: snake_db
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: Asd112233
+      POSTGRES_DB: snake_db
+    volumes:
+      - postgres-data-prod:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres-data-prod: {}
